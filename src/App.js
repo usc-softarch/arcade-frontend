@@ -2,6 +2,8 @@ import './App.css';
 import ArcadeBar from "./ArcadeBar";
 import PaperHeader from "./PaperHeader";
 import ArcadeFileUpload from "./ArcadeFileUpload";
+import Home from "./Pages/Home";
+import Descriptions from "./Descriptions"
 
 function App() {
   return (
@@ -10,8 +12,10 @@ function App() {
           </ArcadeBar>
           <PaperHeader>
           </PaperHeader>
-          <ArcadeFileUpload>
-          </ArcadeFileUpload>
+          <Home>
+          </Home>
+          <Descriptions>
+          </Descriptions>
       </div>
   );
 }
