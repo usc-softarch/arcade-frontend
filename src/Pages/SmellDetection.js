@@ -112,6 +112,7 @@ export default function HorizontalLinearStepper() {
                         <input
                             type="file"
                             hidden
+                            multiple
                         />
                     </Button>
                     <Typography variant="overline" display="block" gutterBottom>Cluster RSF Files</Typography>
@@ -123,6 +124,7 @@ export default function HorizontalLinearStepper() {
                         <input
                             type="file"
                             hidden
+                            multiple
                         />
                     </Button>
                     <Typography variant="overline" display="block" gutterBottom>Language</Typography>
