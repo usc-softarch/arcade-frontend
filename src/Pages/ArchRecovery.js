@@ -110,6 +110,7 @@ export default function HorizontalLinearStepper() {
                     >
                         Upload Directory
                         <input
+                            directory="" webkitdirectory=""
                             type="file"
                             hidden
                         />
@@ -123,6 +124,7 @@ export default function HorizontalLinearStepper() {
                         <input
                             type="file"
                             hidden
+                            multiple
                         />
                     </Button>
                     <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
