@@ -49,7 +49,7 @@ export default function Descriptions() {
   };
 
   return (
-    <Box pl={45} sx={{ width: 750 }}> 
+    <Box sx={{ flexGrow: 1, mx: "auto", width: '30%', textAlign: "left"}}>
       <Stepper activeStep={activeStep} orientation="vertical">
         {steps.map((step, index) => (
           <Step key={step.label} active = {true}>

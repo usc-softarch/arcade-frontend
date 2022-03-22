@@ -10,6 +10,7 @@ function ArcadeBar() {
                         ARCADE
                     </Typography>
                     <Button color="inherit">Home</Button>
+                    <Button color="inherit">Fact Extraction</Button>
                     <Button color="inherit">Arch Recovery</Button>
                     <Button color="inherit">Smell Detection</Button>
                     <Button color="inherit">Metrics</Button>

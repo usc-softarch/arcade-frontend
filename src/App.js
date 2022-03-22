@@ -10,12 +10,8 @@ function App() {
       <div>
           <ArcadeBar>
           </ArcadeBar>
-          <PaperHeader>
-          </PaperHeader>
           <Home>
           </Home>
-          <Descriptions>
-          </Descriptions>
       </div>
   );
 }
