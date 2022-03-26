@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import {Typography} from "@mui/material";
 import PaperHeader from "../PaperHeader";
@@ -10,7 +9,7 @@ function Home() {
         <div>
             <PaperHeader>
             </PaperHeader>
-            <Box sx={{ flexGrow: 1, mx: "auto", width: '30%', textAlign: "center", paddingTop: "25px" }}>
+            <Box sx={{ flexGrow: 1, mx: "auto", width: '50%', textAlign: "center", paddingTop: "25px" }}>
                 <Typography variant="body1" component="div" paddingBottom="25px">
                     ARCADE is a software workbench that employs a suite of architecture-recovery techniques, a
                     catalogue of architectural smell definitions, accompanying smell-detection algorithms, and a set
