@@ -7,8 +7,7 @@ function App() {
       <div>
           <ArcadeBar>
           </ArcadeBar>
-          <Home>
-          </Home>
+          <Home/>
       </div>
   );
 }

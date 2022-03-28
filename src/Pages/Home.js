@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import {Typography} from "@mui/material";
 import PaperHeader from "../PaperHeader";
 import Descriptions from "../Descriptions"
+import ArcadeBar from "../ArcadeBar";
 
 function Home() {
     return (

@@ -3,10 +3,23 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import ArchRecovery from "./Pages/ArchRecovery";
+import FactExtraction from "./Pages/FactExtraction";
+import Metrics from "./Pages/Metrics";
+import SmellDetection from "./Pages/SmellDetection";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+      <BrowserRouter>
+          <Routes>
+              <Route path="/" element={<App />} />
+              <Route path="/archrecovery" element={<ArchRecovery />} />
+              <Route path="/factextraction" element={<FactExtraction />} />
+              <Route path="/metrics" element={<Metrics />} />
+              <Route path="/smelldetection" element={<SmellDetection />} />
+          </Routes>
+      </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -5,10 +5,11 @@ import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import ArcadeBar from "../ArcadeBar";
 
 const steps = ['Upload Files', 'Choose Settings to Run', 'Results'];
 
-export default function HorizontalLinearStepper() {
+export default function SmellDetection() {
     const [activeStep, setActiveStep] = React.useState(0);
     const [skipped, setSkipped] = React.useState(new Set());
 
@@ -55,6 +56,8 @@ export default function HorizontalLinearStepper() {
     };
 
     return (
+        <div>
+            <ArcadeBar/>
         <Box m={2}>
             <div
                 style={{
@@ -153,5 +156,6 @@ export default function HorizontalLinearStepper() {
                 </React.Fragment>
             )}
         </Box>
+        </div>
     );
 }

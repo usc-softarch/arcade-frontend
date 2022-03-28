@@ -8,10 +8,11 @@ import Typography from '@mui/material/Typography';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import ArcadeBar from "../ArcadeBar";
 
 const steps = ['Upload Files', 'Choose Settings to Run', 'Results'];
 
-export default function HorizontalLinearStepper() {
+export default function Metrics() {
     const [activeStep, setActiveStep] = React.useState(0);
     const [skipped, setSkipped] = React.useState(new Set());
 
@@ -58,6 +59,8 @@ export default function HorizontalLinearStepper() {
     };
 
     return (
+        <div>
+            <ArcadeBar/>
         <Box m={2}>
             <div
                 style={{
@@ -155,5 +158,6 @@ export default function HorizontalLinearStepper() {
                 </React.Fragment>
             )}
         </Box>
+        </div>
     );
 }
