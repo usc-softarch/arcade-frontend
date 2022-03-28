@@ -17,12 +17,6 @@ function ArcadeBar() {
                             to="/">
                             Home
                         </Button>
-                        <Button
-                            color="inherit"
-                            component={RouterLink}
-                            to="/archrecovery">
-                            Arch Recovery
-                        </Button>
                     <Button
                         color="inherit"
                         component={RouterLink}
@@ -32,14 +26,20 @@ function ArcadeBar() {
                     <Button
                         color="inherit"
                         component={RouterLink}
-                        to="/metrics">
-                        Metrics
+                        to="/archrecovery">
+                        Arch Recovery
                     </Button>
                     <Button
                         color="inherit"
                         component={RouterLink}
                         to="/smelldetection">
                         Smell Detection
+                    </Button>
+                    <Button
+                        color="inherit"
+                        component={RouterLink}
+                        to="/metrics">
+                        Metrics
                     </Button>
                     <Button
                         color="inherit"
