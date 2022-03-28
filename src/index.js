@@ -8,7 +8,6 @@ import ArchRecovery from "./Pages/ArchRecovery";
 import FactExtraction from "./Pages/FactExtraction";
 import Metrics from "./Pages/Metrics";
 import SmellDetection from "./Pages/SmellDetection";
-import Visualization from "./Pages/Visualization";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -19,7 +18,6 @@ ReactDOM.render(
               <Route path="/factextraction" element={<FactExtraction />} />
               <Route path="/metrics" element={<Metrics />} />
               <Route path="/smelldetection" element={<SmellDetection />} />
-              <Route path="/visualization" element={<Visualization />} />
           </Routes>
       </BrowserRouter>
   </React.StrictMode>,

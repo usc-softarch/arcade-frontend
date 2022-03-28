@@ -41,12 +41,6 @@ function ArcadeBar() {
                         to="/metrics">
                         Metrics
                     </Button>
-                    <Button
-                        color="inherit"
-                        component={RouterLink}
-                        to="/visualization">
-                        Visualization
-                    </Button>
                 </Toolbar>
             </AppBar>
         </Box>
