@@ -1,1 +1,6 @@
-uscsoftarch/arcade/ArcadeApplication.class
+uscsoftarch\arcade\ArcadeApplication.class
+uscsoftarch\arcade\web\FileController.class
+uscsoftarch\arcade\service\FileStorageService.class
+uscsoftarch\arcade\domain\File.class
+uscsoftarch\arcade\domain\Message.class
+uscsoftarch\arcade\service\FilesStorageServiceImpl.class

@@ -6,6 +6,15 @@ import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import ArcadeBar from "../ArcadeBar";
+import UploadFiles from "../components/upload-files.component";
+import Grid from '@mui/material/Grid';
+import { styled } from '@mui/material/styles';
+import Paper from '@mui/material/Paper';
+
+const Item = styled(Paper)(({ theme }) => ({
+    padding: theme.spacing(1),
+    textAlign: 'center',
+}));
 
 const steps = ['Upload Files', 'Choose Settings to Run', 'Results'];
 
@@ -59,19 +68,22 @@ export default function SmellDetection() {
         <div>
             <ArcadeBar/>
         <Box m={2}>
-            <div
-                style={{
-                    width: 750,
-                    transform: 'translate(50%, 0)',
-                    textAlign: 'center',
-                    paddingTop: '15px',
-                    paddingBottom: '15px'
-                }}
-            >
-                <Typography variant="body1" gutterBottom>
-                    Architectural smells are instances of potentially problematic design decisions that, over time, cause architectural decay. ARCADE’s decay detectors are applied on the outputs of the recovery tools to identify those instances. Decay detectors currently available through ARCADE are capable of identifying 11 different architectural smells, grouped in four categories: interface-based, change-based, concern-based, and dependency-based.
-                </Typography>
-            </div>
+            <Box sx={{ flexGrow: 1 }}>
+                <Grid container spacing={2}>
+                    <Grid item xs={12}>
+                        <Item>
+                            <Typography variant="h5" component="div">
+                                <Box component="span" fontWeight='fontWeightMedium'>Smell Detection</Box>
+                            </Typography>
+                        </Item>
+                    </Grid>
+                </Grid>
+            </Box>
+            <Box sx={{ flexGrow: 1, mx: "auto", width: '60%', textAlign: "center", paddingTop: "10px", paddingBottom: "10px" }}>
+                    <Typography variant="body1" gutterBottom>
+                        Architectural smells are instances of potentially problematic design decisions that, over time, cause architectural decay. ARCADE’s decay detectors are applied on the outputs of the recovery tools to identify those instances. Decay detectors currently available through ARCADE are capable of identifying 11 different architectural smells, grouped in four categories: interface-based, change-based, concern-based, and dependency-based.
+                    </Typography>
+            </Box>
             <Stepper activeStep={activeStep}>
                 {steps.map((label, index) => {
                     const stepProps = {};
@@ -104,32 +116,16 @@ export default function SmellDetection() {
             ) : (
                 <React.Fragment>
                     <Typography variant="overline" display="block" gutterBottom>Recovery Technique</Typography>
-                    <input type="radio" value="ACDC" /> ACDC
-                    <input type="radio" value="ARC" /> ARC
+                    <input type="radio" value="ArchSmellDetector" /> ArchSmellDetector
+                    &nbsp;
+                    <input type="radio" value="DependencyFinderProcessing" /> DependencyFinderProcessing
+                    <div> <br /> </div>
                     <Typography variant="overline" display="block" gutterBottom>Dependency RSF Files</Typography>
-                    <Button
-                        variant="contained"
-                        component="label"
-                    >
-                        Upload File
-                        <input
-                            type="file"
-                            hidden
-                            multiple
-                        />
-                    </Button>
+                        <UploadFiles />
+                    <div> <br /> </div>
                     <Typography variant="overline" display="block" gutterBottom>Cluster RSF Files</Typography>
-                    <Button
-                        variant="contained"
-                        component="label"
-                    >
-                        Upload File
-                        <input
-                            type="file"
-                            hidden
-                            multiple
-                        />
-                    </Button>
+                        <UploadFiles />
+                    <div> <br /> </div>
                     <Typography variant="overline" display="block" gutterBottom>Language</Typography>
                     <input type="radio" value="Java" /> Java
                     <input type="radio" value="C/C++" /> C/C++

@@ -9,6 +9,15 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import ArcadeBar from "../ArcadeBar";
+import UploadFiles from "../components/upload-files.component";
+import Grid from '@mui/material/Grid';
+import { styled } from '@mui/material/styles';
+import Paper from '@mui/material/Paper';
+
+const Item = styled(Paper)(({ theme }) => ({
+    padding: theme.spacing(1),
+    textAlign: 'center',
+}));
 
 const steps = ['Upload Files', 'Choose Settings to Run', 'Results'];
 
@@ -62,19 +71,22 @@ export default function Metrics() {
         <div>
             <ArcadeBar/>
         <Box m={2}>
-            <div
-                style={{
-                    width: 750,
-                    transform: 'translate(50%, 0)',
-                    textAlign: 'center',
-                    paddingTop: '15px',
-                    paddingBottom: '15px'
-                }}
-            >
-                <Typography variant="body1" gutterBottom>
-                    Architectural smells are instances of potentially problematic design decisions that, over time, cause architectural decay. ARCADE’s decay detectors are applied on the outputs of the recovery tools to identify those instances. Decay detectors currently available through ARCADE are capable of identifying 11 different architectural smells, grouped in four categories: interface-based, change-based, concern-based, and dependency-based.
-                </Typography>
-            </div>
+            <Box sx={{ flexGrow: 1 }}>
+                <Grid container spacing={2}>
+                    <Grid item xs={12}>
+                        <Item>
+                            <Typography variant="h5" component="div">
+                                <Box component="span" fontWeight='fontWeightMedium'>Metrics</Box>
+                            </Typography>
+                        </Item>
+                    </Grid>
+                </Grid>
+            </Box>
+            <Box sx={{ flexGrow: 1, mx: "auto", width: '60%', textAlign: "center", paddingTop: "10px", paddingBottom: "10px" }}>
+                    <Typography variant="body1" gutterBottom>
+                        ARCADE incorporates various metrics for quantifying architectural change and decay. These metrics focus either on the whole system or on individual components (i.e., the recovered clusters of code-level entities).
+                    </Typography>
+            </Box>
             <Stepper activeStep={activeStep}>
                 {steps.map((label, index) => {
                     const stepProps = {};
@@ -107,34 +119,15 @@ export default function Metrics() {
             ) : (
                 <React.Fragment>
                     <Typography variant="overline" display="block" gutterBottom>Select metric(s):</Typography>
-                    <FormGroup>
-                        <FormControlLabel control={<Checkbox defaultChecked />} label="A2A" />
-                        <FormControlLabel control={<Checkbox defaultChecked />} label="Decay Metrics" />
-                    </FormGroup>
+                    <input type="radio" value="A2A" /> A2A
+                    &nbsp;
+                    <input type="radio" value="Decay Metrics" /> Decay Metrics
+                    <div> <br /> </div>
                     <Typography variant="overline" display="block" gutterBottom>Folder containing clustered RSF files:</Typography>
-                    <Button
-                        variant="contained"
-                        component="label"
-                    >
-                        Upload File
-                        <input
-                            type="file"
-                            hidden
-                            multiple
-                        />
-                    </Button>
+                        <UploadFiles />
+                    <div> <br /> </div>
                     <Typography variant="overline" display="block" gutterBottom>Directory containing dependency RSF files:</Typography>
-                    <Button
-                        variant="contained"
-                        component="label"
-                    >
-                        Upload File
-                        <input
-                            type="file"
-                            hidden
-                            multiple
-                        />
-                    </Button>
+                        <UploadFiles />
                     <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                         <Button
                             color="inherit"

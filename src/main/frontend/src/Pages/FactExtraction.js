@@ -6,6 +6,15 @@ import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import ArcadeBar from "../ArcadeBar";
+import UploadFiles from "../components/upload-files.component";
+import Grid from '@mui/material/Grid';
+import { styled } from '@mui/material/styles';
+import Paper from '@mui/material/Paper';
+
+const Item = styled(Paper)(({ theme }) => ({
+    padding: theme.spacing(1),
+    textAlign: 'center',
+}));
 
 const steps = ['Upload Files', 'Choose Settings to Run', 'Results'];
 
@@ -59,19 +68,22 @@ export default function FactExtraction() {
         <div>
             <ArcadeBar/>
         <Box m={2}>
-            <div
-                style={{
-                    width: 750,
-                    transform: 'translate(50%, 0)',
-                    textAlign: 'center',
-                    paddingTop: '15px',
-                    paddingBottom: '15px'
-                }}
-                >
+            <Box sx={{ flexGrow: 1 }}>
+                <Grid container spacing={2}>
+                    <Grid item xs={12}>
+                        <Item>
+                            <Typography variant="h5" component="div">
+                                <Box component="span" fontWeight='fontWeightMedium'>Fact Extraction</Box>
+                            </Typography>
+                        </Item>
+                    </Grid>
+                </Grid>
+            </Box>
+            <Box sx={{ flexGrow: 1, mx: "auto", width: '60%', textAlign: "center", paddingTop: "10px", paddingBottom: "10px" }}>
                     <Typography variant="body1" gutterBottom>
                         This tool extracts information needed to run the architectural recovery.
                     </Typography>
-            </div>
+            </Box>
             <Stepper activeStep={activeStep}>
                 {steps.map((label, index) => {
                     const stepProps = {};
@@ -115,31 +127,13 @@ export default function FactExtraction() {
                             hidden
                         />
                     </Button>
+                    <div> <br /> </div>
                     <Typography variant="overline" display="block" gutterBottom>Dependencies RSF files</Typography>
-                    <Button
-                        variant="contained"
-                        component="label"
-                    >
-                        Upload File
-                        <input
-                            type="file"
-                            accept=".rsf"
-                            hidden
-                            multiple
-                        />
-                    </Button>
+                        <UploadFiles />
+                    <div> <br /> </div>
                     <Typography variant="overline" display="block" gutterBottom>Fast feature vectors file</Typography>
-                    <Button
-                        variant="contained"
-                        component="label"
-                    >
-                        Upload File
-                        <input
-                            type="file"
-                            hidden
-                            multiple
-                        />
-                    </Button>
+                        <UploadFiles />
+                    <div> <br /> </div>
                     <Typography variant="overline" display="block" gutterBottom>Language</Typography>
                     <input type="radio" value="Java" /> Java
                     <input type="radio" value="C++" /> C++

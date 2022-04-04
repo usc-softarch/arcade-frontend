@@ -1,6 +1,6 @@
 import './App.css';
 import ArcadeBar from "./ArcadeBar";
-import Home from "./Pages/Home";
+import Home from "./pages/Home";
 
 function App() {
   return (

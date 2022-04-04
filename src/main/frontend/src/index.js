@@ -4,10 +4,10 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import ArchRecovery from "./Pages/ArchRecovery";
-import FactExtraction from "./Pages/FactExtraction";
-import Metrics from "./Pages/Metrics";
-import SmellDetection from "./Pages/SmellDetection";
+import ArchRecovery from "./pages/ArchRecovery";
+import FactExtraction from "./pages/FactExtraction";
+import Metrics from "./pages/Metrics";
+import SmellDetection from "./pages/SmellDetection";
 
 ReactDOM.render(
   <React.StrictMode>

@@ -17,7 +17,7 @@ function PaperHeader() {
                 <Grid item xs={12}>
                     <Item>
                         <Typography variant="h4" component="div">
-                            ARCADE
+                            <Box component="span" fontWeight='fontWeightMedium'>ARCADE</Box>
                         </Typography>
                         <Typography variant="subtitle1" component="div">
                             Architecture Recovery, Change, And Decay Evaluator

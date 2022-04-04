@@ -6,6 +6,16 @@ import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import ArcadeBar from "../ArcadeBar";
+import UploadFiles from "../components/upload-files.component";
+import Grid from '@mui/material/Grid';
+import { styled } from '@mui/material/styles';
+import Paper from '@mui/material/Paper';
+
+const Item = styled(Paper)(({ theme }) => ({
+    padding: theme.spacing(1),
+    textAlign: 'center',
+}));
+
 
 const steps = ['Upload Files', 'Choose Settings to Run', 'Results'];
 
@@ -59,19 +69,22 @@ export default function ArchRecovery() {
         <div>
             <ArcadeBar/>
         <Box m={2}>
-            <div
-                style={{
-                    width: '70%',
-                    transform: 'translate(22%, 0)',
-                    textAlign: 'center',
-                    paddingTop: '15px',
-                    paddingBottom: '15px'
-                }}
-                >
-                    <Typography class="centeredTextBox" variant="body1" gutterBottom>
-                    Recovery constructs architectural models from implementation level artifacts. The recovery tools integrated within ARCADE implement different strategies for clustering implementation-level entities into architectural elements, including dependency analysis, information retrieval, search-based strategies, machine learning, etc. 
+            <Box sx={{ flexGrow: 1 }}>
+                <Grid container spacing={2}>
+                    <Grid item xs={12}>
+                        <Item>
+                            <Typography variant="h5" component="div">
+                                <Box component="span" fontWeight='fontWeightMedium'>Arch Recovery</Box>
+                            </Typography>
+                        </Item>
+                    </Grid>
+                </Grid>
+            </Box>
+            <Box sx={{ flexGrow: 1, mx: "auto", width: '60%', textAlign: "center", paddingTop: "10px", paddingBottom: "10px" }}>
+                    <Typography variant="body1" gutterBottom>
+                        Recovery constructs architectural models from implementation level artifacts. The recovery tools integrated within ARCADE implement different strategies for clustering implementation-level entities into architectural elements, including dependency analysis, information retrieval, search-based strategies, machine learning, etc.
                     </Typography>
-            </div>
+            </Box>
             <Stepper activeStep={activeStep}>
                 {steps.map((label, index) => {
                     const stepProps = {};
@@ -105,31 +118,19 @@ export default function ArchRecovery() {
                 <React.Fragment>
                     <Typography variant="overline" display="block" gutterBottom>Recovery Technique</Typography>
                     <input type="radio" value="ACDC" /> ACDC
+                    &nbsp;
                     <input type="radio" value="ARC" /> ARC
+                    <div> <br /> </div>
                     <Typography variant="overline" display="block" gutterBottom>Input File Directory</Typography>
                     <Button
                         variant="contained"
                         component="label"
                     >
                         Upload Directory
-                        <input
-                            directory="" webkitdirectory=""
-                            type="file"
-                            hidden
-                        />
                     </Button>
+                    <div> <br /> </div>
                     <Typography variant="overline" display="block" gutterBottom>Fact Extractor Files (optional)</Typography>
-                    <Button
-                        variant="contained"
-                        component="label"
-                    >
-                        Upload File
-                        <input
-                            type="file"
-                            hidden
-                            multiple
-                        />
-                    </Button>
+                        <UploadFiles />
                     <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                         <Button
                             color="inherit"
