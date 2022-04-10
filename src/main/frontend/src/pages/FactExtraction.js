@@ -132,9 +132,6 @@ export default function FactExtraction() {
                     <Typography variant="overline" display="block" gutterBottom>Dependencies RSF files</Typography>
                         <UploadFiles />
                     <div> <br /> </div>
-                    <Typography variant="overline" display="block" gutterBottom>Fast feature vectors file</Typography>
-                        <UploadFiles />
-                    <div> <br /> </div>
                     <Typography variant="overline" display="block" gutterBottom>Language</Typography>
                     <input type="radio" value="Java" /> Java
                     <input type="radio" value="C++" /> C++
