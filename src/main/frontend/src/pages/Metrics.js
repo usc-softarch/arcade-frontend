@@ -33,11 +33,11 @@ export default function Metrics() {
         return step === 1;
     };
 
-    const clearRadioList = () => {
-        let radList = document.getElementsByName("test1");
-        for (var i = 0; i < radList.length; i++) {
-            if (radList[i].checked) radList[i].checked = false;
-        }
+    const clearMetricSelections = () => {
+        let m1 = document.getElementById("metric1");
+        let m2 = document.getElementById("metric2");
+        if (m1.checked) m1.checked = false;
+        if (m2.checked) m2.checked = false;
     };
 
     const handleNext = () => {
@@ -126,10 +126,10 @@ export default function Metrics() {
             ) : (
                 <React.Fragment>
                     <Typography variant="overline" display="block" gutterBottom>Select metric(s):</Typography>
-                    <input type="radio" name="test1" value="A2A" /> A2A
+                    <input type="radio" id="metric1" value="A2A" /> A2A
                     &nbsp;
-                    <input type="radio" name="test1" value="Decay Metrics" /> Decay Metrics
-                    <Button onClick={clearRadioList}>
+                    <input type="radio" id="metric2" value="Decay Metrics" /> Decay Metrics
+                    <Button onClick={clearMetricSelections}>
                         Clear
                     </Button>
                     <div> <br /> </div>

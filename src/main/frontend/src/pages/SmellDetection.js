@@ -30,6 +30,13 @@ export default function SmellDetection() {
         return step === 1;
     };
 
+    const clearSmellDetectors = () => {
+        let sd1 = document.getElementById("smellDetector1");
+        let sd2 = document.getElementById("smellDetector2");
+        if (sd1.checked) sd1.checked = false;
+        if (sd2.checked) sd2.checked = false;
+    };
+
     const handleNext = () => {
         let newSkipped = skipped;
         if (isStepSkipped(activeStep)) {
@@ -116,9 +123,12 @@ export default function SmellDetection() {
             ) : (
                 <React.Fragment>
                     <Typography variant="overline" display="block" gutterBottom>Select Smell Detector(s):</Typography>
-                    <input type="radio" value="ArchSmellDetector" /> ArchSmellDetector
+                    <input type="radio" id="smellDetector1" value="ArchSmellDetector" /> ArchSmellDetector
                     &nbsp;
-                    <input type="radio" value="DependencyFinderProcessing" /> DependencyFinderProcessing
+                    <input type="radio" id="smellDetector2" value="DependencyFinderProcessing" /> DependencyFinderProcessing
+                    <Button onClick={clearSmellDetectors}>
+                        Clear
+                    </Button>
                     <div> <br /> </div>
                     <Typography variant="overline" display="block" gutterBottom>Dependency RSF Files</Typography>
                         <UploadFiles />
