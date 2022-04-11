@@ -80,12 +80,12 @@ export default function ArchRecovery() {
                     </Grid>
                 </Grid>
             </Box>
-            <Box sx={{ flexGrow: 1, mx: "auto", width: '60%', textAlign: "center", paddingTop: "10px", paddingBottom: "10px" }}>
+            <Box sx={{ flexGrow: 1, mx: "auto", width: '66%', textAlign: "center", paddingTop: "10px", paddingBottom: "10px" }}>
                     <Typography variant="body1" gutterBottom>
                         Recovery constructs architectural models from implementation level artifacts. The recovery tools integrated within ARCADE implement different strategies for clustering implementation-level entities into architectural elements, including dependency analysis, information retrieval, search-based strategies, machine learning, etc.
                     </Typography>
             </Box>
-            <Stepper activeStep={activeStep}>
+            <Stepper activeStep={activeStep} sx={{ mb: 2 }}>
                 {steps.map((label, index) => {
                     const stepProps = {};
                     const labelProps = {};

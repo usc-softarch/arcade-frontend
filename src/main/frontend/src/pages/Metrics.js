@@ -89,12 +89,12 @@ export default function Metrics() {
                     </Grid>
                 </Grid>
             </Box>
-            <Box sx={{ flexGrow: 1, mx: "auto", width: '60%', textAlign: "center", paddingTop: "10px", paddingBottom: "10px" }}>
+            <Box sx={{ flexGrow: 1, mx: "auto", width: '66%', textAlign: "center", paddingTop: "10px", paddingBottom: "10px" }}>
                     <Typography variant="body1" gutterBottom>
                         ARCADE incorporates various metrics for quantifying architectural change and decay. These metrics focus either on the whole system or on individual components (i.e., the recovered clusters of code-level entities).
                     </Typography>
             </Box>
-            <Stepper activeStep={activeStep}>
+            <Stepper activeStep={activeStep} sx={{ mb: 2 }}>
                 {steps.map((label, index) => {
                     const stepProps = {};
                     const labelProps = {};
@@ -130,10 +130,9 @@ export default function Metrics() {
                     &nbsp;
                     <input type="radio" id="metric2" value="Decay Metrics" /> Decay Metrics
                     <div/>
-                    <Button onClick={clearMetricSelections}>
+                    <Button onClick={clearMetricSelections} sx={{ mb: 1 }}>
                         Clear
                     </Button>
-                    <div> <br /> </div>
                     <Typography variant="overline" display="block" gutterBottom>Folder containing clustered RSF files:</Typography>
                         <UploadFiles />
                     <div> <br /> </div>

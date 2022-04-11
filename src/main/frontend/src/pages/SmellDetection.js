@@ -86,12 +86,12 @@ export default function SmellDetection() {
                     </Grid>
                 </Grid>
             </Box>
-            <Box sx={{ flexGrow: 1, mx: "auto", width: '60%', textAlign: "center", paddingTop: "10px", paddingBottom: "10px" }}>
+            <Box sx={{ flexGrow: 1, mx: "auto", width: '66%', textAlign: "center", paddingTop: "10px", paddingBottom: "10px" }}>
                     <Typography variant="body1" gutterBottom>
                         Architectural smells are instances of potentially problematic design decisions that, over time, cause architectural decay. ARCADE’s decay detectors are applied on the outputs of the recovery tools to identify those instances. Decay detectors currently available through ARCADE are capable of identifying 11 different architectural smells, grouped in four categories: interface-based, change-based, concern-based, and dependency-based.
                     </Typography>
             </Box>
-            <Stepper activeStep={activeStep}>
+            <Stepper activeStep={activeStep} sx={{ mb: 2 }}>
                 {steps.map((label, index) => {
                     const stepProps = {};
                     const labelProps = {};
@@ -127,10 +127,9 @@ export default function SmellDetection() {
                     &nbsp;
                     <input type="radio" id="smellDetector2" value="DependencyFinderProcessing" /> DependencyFinderProcessing
                     <div/>
-                    <Button onClick={clearSmellDetectors}>
+                    <Button onClick={clearSmellDetectors} sx={{ mb: 1 }}>
                         Clear
                     </Button>
-                    <div> <br /> </div>
                     <Typography variant="overline" display="block" gutterBottom>Dependency RSF Files</Typography>
                         <UploadFiles />
                     <div> <br /> </div>

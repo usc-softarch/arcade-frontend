@@ -80,12 +80,12 @@ export default function FactExtraction() {
                     </Grid>
                 </Grid>
             </Box>
-            <Box sx={{ flexGrow: 1, mx: "auto", width: '60%', textAlign: "center", paddingTop: "10px", paddingBottom: "10px" }}>
+            <Box sx={{ flexGrow: 1, mx: "auto", width: '66%', textAlign: "center", paddingTop: "10px", paddingBottom: "10px" }}>
                     <Typography variant="body1" gutterBottom>
                         This tool extracts information needed to run the architectural recovery.
                     </Typography>
             </Box>
-            <Stepper activeStep={activeStep}>
+            <Stepper activeStep={activeStep} sx={{ mb: 2 }}>
                 {steps.map((label, index) => {
                     const stepProps = {};
                     const labelProps = {};
