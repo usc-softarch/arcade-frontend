@@ -117,9 +117,9 @@ export default function ArchRecovery() {
             ) : (
                 <React.Fragment>
                     <Typography variant="overline" display="block" gutterBottom>Recovery Technique</Typography>
-                    <input type="radio" value="ACDC" /> ACDC
+                    <input type="radio" name="recoveryTechniqueSelection" value="ACDC" /> ACDC
                     &nbsp;
-                    <input type="radio" value="ARC" /> ARC
+                    <input type="radio" name="recoveryTechniqueSelection" value="ARC" /> ARC
                     <div> <br /> </div>
                     <Typography variant="overline" display="block" gutterBottom>Input File Directory</Typography>
                     <Button

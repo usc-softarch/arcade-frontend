@@ -33,6 +33,13 @@ export default function Metrics() {
         return step === 1;
     };
 
+    const clearRadioList = () => {
+        let radList = document.getElementsByName("test1");
+        for (var i = 0; i < radList.length; i++) {
+            if (radList[i].checked) radList[i].checked = false;
+        }
+    };
+
     const handleNext = () => {
         let newSkipped = skipped;
         if (isStepSkipped(activeStep)) {
@@ -119,9 +126,12 @@ export default function Metrics() {
             ) : (
                 <React.Fragment>
                     <Typography variant="overline" display="block" gutterBottom>Select metric(s):</Typography>
-                    <input type="radio" value="A2A" /> A2A
+                    <input type="radio" name="test1" value="A2A" /> A2A
                     &nbsp;
-                    <input type="radio" value="Decay Metrics" /> Decay Metrics
+                    <input type="radio" name="test1" value="Decay Metrics" /> Decay Metrics
+                    <Button onClick={clearRadioList}>
+                        Clear
+                    </Button>
                     <div> <br /> </div>
                     <Typography variant="overline" display="block" gutterBottom>Folder containing clustered RSF files:</Typography>
                         <UploadFiles />

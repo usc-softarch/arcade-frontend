@@ -133,8 +133,8 @@ export default function FactExtraction() {
                         <UploadFiles />
                     <div> <br /> </div>
                     <Typography variant="overline" display="block" gutterBottom>Language</Typography>
-                    <input type="radio" value="Java" /> Java
-                    <input type="radio" value="C++" /> C++
+                    <input type="radio" name="languageSelection" value="Java" /> Java
+                    <input type="radio" name="languageSelection" value="C++" /> C++
                     <div> <br /> </div>
                     <Typography variant="overline" display="block" gutterBottom>Package Prefix (Optional)</Typography>
                     <TextField id="standard-basic" variant="standard" />

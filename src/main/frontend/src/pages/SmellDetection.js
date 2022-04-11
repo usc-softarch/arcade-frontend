@@ -115,7 +115,7 @@ export default function SmellDetection() {
                 </React.Fragment>
             ) : (
                 <React.Fragment>
-                    <Typography variant="overline" display="block" gutterBottom>Recovery Technique</Typography>
+                    <Typography variant="overline" display="block" gutterBottom>Select Smell Detector(s):</Typography>
                     <input type="radio" value="ArchSmellDetector" /> ArchSmellDetector
                     &nbsp;
                     <input type="radio" value="DependencyFinderProcessing" /> DependencyFinderProcessing
@@ -127,8 +127,8 @@ export default function SmellDetection() {
                         <UploadFiles />
                     <div> <br /> </div>
                     <Typography variant="overline" display="block" gutterBottom>Language</Typography>
-                    <input type="radio" value="Java" /> Java
-                    <input type="radio" value="C/C++" /> C/C++
+                    <input type="radio" name="languageSelection" value="Java" /> Java
+                    <input type="radio" name="languageSelection" value="C/C++" /> C/C++
                     <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                         <Button
                             color="inherit"
