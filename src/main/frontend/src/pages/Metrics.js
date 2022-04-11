@@ -77,7 +77,7 @@ export default function Metrics() {
     return (
         <div>
             <ArcadeBar/>
-        <Box m={2}>
+        <Box m={2} sx={{ flexGrow: 1, mx: "auto", width: '75%' }}>
             <Box sx={{ flexGrow: 1 }}>
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
@@ -129,6 +129,7 @@ export default function Metrics() {
                     <input type="radio" id="metric1" value="A2A" /> A2A
                     &nbsp;
                     <input type="radio" id="metric2" value="Decay Metrics" /> Decay Metrics
+                    <div/>
                     <Button onClick={clearMetricSelections}>
                         Clear
                     </Button>

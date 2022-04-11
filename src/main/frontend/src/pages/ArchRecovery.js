@@ -68,7 +68,7 @@ export default function ArchRecovery() {
     return (
         <div>
             <ArcadeBar/>
-        <Box m={2}>
+        <Box m={2} sx={{ flexGrow: 1, mx: "auto", width: '75%' }}>
             <Box sx={{ flexGrow: 1 }}>
                 <Grid container spacing={2}>
                     <Grid item xs={12}>

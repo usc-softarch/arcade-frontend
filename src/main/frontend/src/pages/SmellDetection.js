@@ -74,7 +74,7 @@ export default function SmellDetection() {
     return (
         <div>
             <ArcadeBar/>
-        <Box m={2}>
+        <Box m={2} sx={{ flexGrow: 1, mx: "auto", width: '75%' }}>
             <Box sx={{ flexGrow: 1 }}>
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
@@ -126,6 +126,7 @@ export default function SmellDetection() {
                     <input type="radio" id="smellDetector1" value="ArchSmellDetector" /> ArchSmellDetector
                     &nbsp;
                     <input type="radio" id="smellDetector2" value="DependencyFinderProcessing" /> DependencyFinderProcessing
+                    <div/>
                     <Button onClick={clearSmellDetectors}>
                         Clear
                     </Button>
