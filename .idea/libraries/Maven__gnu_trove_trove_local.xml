@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: gnu.trove:trove:local">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/gnu/trove/trove/local/trove-local.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/gnu/trove/trove/local/trove-local-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/gnu/trove/trove/local/trove-local-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: cc.mallet:mallet:local">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/cc/mallet/mallet/local/mallet-local.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/cc/mallet/mallet/local/mallet-local-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/cc/mallet/mallet/local/mallet-local-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

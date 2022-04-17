@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.ojn.gexf4j:gexf4j:local">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/ojn/gexf4j/gexf4j/local/gexf4j-local.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/ojn/gexf4j/gexf4j/local/gexf4j-local-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/ojn/gexf4j/gexf4j/local/gexf4j-local-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
