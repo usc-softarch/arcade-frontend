@@ -23,6 +23,10 @@ export default function ArchRecovery() {
     const [activeStep, setActiveStep] = React.useState(0);
     const [skipped, setSkipped] = React.useState(new Set());
 
+    const [recoveryTechnique, setRecoveryTechnique] = React.useState('');
+    const [inputFileDirectory, setInputFileDirectory] = React.useState('');
+    const [factExtractorFiles, setFactExtractorFiles] = React.useState('');
+
     const isStepOptional = (step) => {
         return step === 1;
     };
@@ -64,6 +68,10 @@ export default function ArchRecovery() {
     const handleReset = () => {
         setActiveStep(0);
     };
+
+    const handleFactCallback = (childData) => {
+        setFactExtractorFiles(childData);
+    }
 
     return (
         <div>
@@ -117,9 +125,9 @@ export default function ArchRecovery() {
             ) : (
                 <React.Fragment>
                     <Typography variant="overline" display="block" gutterBottom>Recovery Technique</Typography>
-                    <input type="radio" name="recoveryTechniqueSelection" value="ACDC" /> ACDC
+                    <input onClick={() => {setRecoveryTechnique("ACDC")}}  type="radio" name="recoveryTechniqueSelection" value="ACDC" /> ACDC
                     &nbsp;
-                    <input type="radio" name="recoveryTechniqueSelection" value="ARC" /> ARC
+                    <input onClick={() => {setRecoveryTechnique("ARC")}} type="radio" name="recoveryTechniqueSelection" value="ARC" /> ARC
                     <div> <br /> </div>
                     <Typography variant="overline" display="block" gutterBottom>Input File Directory</Typography>
                     <Button
@@ -130,7 +138,7 @@ export default function ArchRecovery() {
                     </Button>
                     <div> <br /> </div>
                     <Typography variant="overline" display="block" gutterBottom>Fact Extractor Files (optional)</Typography>
-                        <UploadFiles />
+                        <UploadFiles parentCallback = {handleFactCallback} />
                     <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                         <Button
                             color="inherit"

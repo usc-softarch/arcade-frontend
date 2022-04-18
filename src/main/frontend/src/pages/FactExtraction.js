@@ -23,6 +23,11 @@ export default function FactExtraction() {
     const [activeStep, setActiveStep] = React.useState(0);
     const [skipped, setSkipped] = React.useState(new Set());
 
+    const [inputFileDirectory, setInputFileDirectory] = React.useState('');
+    const [dependenciesRSFFiles, setDependenciesRSFFiles] = React.useState('');
+    const [language, setLanguage] = React.useState('');
+    const [packagePrefix, setPackagePrefix] = React.useState('');
+
     const isStepOptional = (step) => {
         return step === 1;
     };
@@ -64,6 +69,10 @@ export default function FactExtraction() {
     const handleReset = () => {
         setActiveStep(0);
     };
+
+    const handleDependenciesCallback = (childData) => {
+        setDependenciesRSFFiles(childData);
+    }
 
     return (
         <div>
@@ -130,14 +139,14 @@ export default function FactExtraction() {
                     </Button>
                     <div> <br /> </div>
                     <Typography variant="overline" display="block" gutterBottom>Dependencies RSF files</Typography>
-                        <UploadFiles />
+                        <UploadFiles parentCallback = {handleDependenciesCallback} />
                     <div> <br /> </div>
                     <Typography variant="overline" display="block" gutterBottom>Language</Typography>
-                    <input type="radio" name="languageSelection" value="Java" /> Java
-                    <input type="radio" name="languageSelection" value="C++" /> C++
+                    <input onClick={() => {setLanguage("Java")}} type="radio" name="languageSelection" value="Java" /> Java
+                    <input onClick={() => {setLanguage("C/C++")}} type="radio" name="languageSelection" value="C++" /> C++
                     <div> <br /> </div>
                     <Typography variant="overline" display="block" gutterBottom>Package Prefix (Optional)</Typography>
-                    <TextField id="standard-basic" variant="standard" />
+                    <TextField onChange={(event) => {setPackagePrefix(event.target.value)}} id="standard-basic" variant="standard" />
                     <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                         <Button
                             color="inherit"

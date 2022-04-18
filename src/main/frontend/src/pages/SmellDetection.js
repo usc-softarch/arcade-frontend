@@ -22,6 +22,12 @@ export default function SmellDetection() {
     const [activeStep, setActiveStep] = React.useState(0);
     const [skipped, setSkipped] = React.useState(new Set());
 
+    const [archSmellDetector, setArchSmellDetector] = React.useState(false);
+    const [dependencyFinderProcessing, setDependencyFinderProcessing] = React.useState(false);
+    const [dependencyRSFFiles, setDependencyRSFFiles] = React.useState('');
+    const [clusterRSFFiles, setClusterRSFFiles] = React.useState('');
+    const [language, setLanguage] = React.useState('');
+
     const isStepSkipped = (step) => {
         return skipped.has(step);
     };
@@ -35,6 +41,8 @@ export default function SmellDetection() {
         let sd2 = document.getElementById("smellDetector2");
         if (sd1.checked) sd1.checked = false;
         if (sd2.checked) sd2.checked = false;
+        setArchSmellDetector(false);
+        setDependencyFinderProcessing(false);
     };
 
     const handleNext = () => {
@@ -70,6 +78,14 @@ export default function SmellDetection() {
     const handleReset = () => {
         setActiveStep(0);
     };
+
+    const handleDependencyCallback = (childData) => {
+        setDependencyRSFFiles(childData);
+    }
+
+    const handleClusterCallback = (childData) => {
+        setClusterRSFFiles(childData);
+    }
 
     return (
         <div>
@@ -123,22 +139,22 @@ export default function SmellDetection() {
             ) : (
                 <React.Fragment>
                     <Typography variant="overline" display="block" gutterBottom>Select Smell Detector(s):</Typography>
-                    <input type="radio" id="smellDetector1" value="ArchSmellDetector" /> ArchSmellDetector
+                    <input onClick={() => {setArchSmellDetector(true)}} type="radio" id="smellDetector1" value="ArchSmellDetector" /> ArchSmellDetector
                     &nbsp;
-                    <input type="radio" id="smellDetector2" value="DependencyFinderProcessing" /> DependencyFinderProcessing
+                    <input onClick={() => {setDependencyFinderProcessing(true)}} type="radio" id="smellDetector2" value="DependencyFinderProcessing" /> DependencyFinderProcessing
                     <div/>
                     <Button onClick={clearSmellDetectors} sx={{ mb: 1 }}>
                         Clear
                     </Button>
                     <Typography variant="overline" display="block" gutterBottom>Dependency RSF Files</Typography>
-                        <UploadFiles />
+                        <UploadFiles parentCallback = {handleDependencyCallback} />
                     <div> <br /> </div>
                     <Typography variant="overline" display="block" gutterBottom>Cluster RSF Files</Typography>
-                        <UploadFiles />
+                        <UploadFiles parentCallback = {handleClusterCallback} />
                     <div> <br /> </div>
                     <Typography variant="overline" display="block" gutterBottom>Language</Typography>
-                    <input type="radio" name="languageSelection" value="Java" /> Java
-                    <input type="radio" name="languageSelection" value="C/C++" /> C/C++
+                    <input onClick={() => {setLanguage("Java")}} type="radio" name="languageSelection" value="Java" /> Java
+                    <input onClick={() => {setLanguage("C/C++")}} type="radio" name="languageSelection" value="C/C++" /> C/C++
                     <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                         <Button
                             color="inherit"

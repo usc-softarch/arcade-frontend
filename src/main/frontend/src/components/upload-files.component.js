@@ -55,6 +55,9 @@ export default class UploadFiles extends Component {
         this.setState({
           fileInfos: files.data,
         });
+        if (this.props.parentCallback) {
+          this.props.parentCallback(currentFile.name);
+        }
       })
       .catch(() => {
         this.setState({

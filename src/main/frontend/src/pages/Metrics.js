@@ -25,6 +25,10 @@ export default function Metrics() {
     const [activeStep, setActiveStep] = React.useState(0);
     const [skipped, setSkipped] = React.useState(new Set());
 
+    const [metrics, setMetrics] = React.useState('');
+    const [clusteredRSFFiles, setClusteredRSFFiles] = React.useState('');
+    const [dependencyRSFFiles, setDependencyRSFFiles] = React.useState('');
+
     const isStepSkipped = (step) => {
         return skipped.has(step);
     };
@@ -73,6 +77,14 @@ export default function Metrics() {
     const handleReset = () => {
         setActiveStep(0);
     };
+
+    const handleClusterCallback = (childData) => {
+        setClusteredRSFFiles(childData);
+    }
+
+    const handleDependencyCallback = (childData) => {
+        setDependencyRSFFiles(childData);
+    }
 
     return (
         <div>
@@ -126,18 +138,18 @@ export default function Metrics() {
             ) : (
                 <React.Fragment>
                     <Typography variant="overline" display="block" gutterBottom>Select metric(s):</Typography>
-                    <input type="radio" id="metric1" value="A2A" /> A2A
+                    <input onClick={() => {setMetrics("A2A")}} type="radio" id="metric1" value="A2A" /> A2A
                     &nbsp;
-                    <input type="radio" id="metric2" value="Decay Metrics" /> Decay Metrics
+                    <input onClick={() => {setMetrics("Decay Metrics")}} type="radio" id="metric2" value="Decay Metrics" /> Decay Metrics
                     <div/>
                     <Button onClick={clearMetricSelections} sx={{ mb: 1 }}>
                         Clear
                     </Button>
                     <Typography variant="overline" display="block" gutterBottom>Folder containing clustered RSF files:</Typography>
-                        <UploadFiles />
+                        <UploadFiles parentCallback = {handleClusterCallback} />
                     <div> <br /> </div>
                     <Typography variant="overline" display="block" gutterBottom>Directory containing dependency RSF files:</Typography>
-                        <UploadFiles />
+                        <UploadFiles parentCallback = {handleDependencyCallback} />
                     <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                         <Button
                             color="inherit"
