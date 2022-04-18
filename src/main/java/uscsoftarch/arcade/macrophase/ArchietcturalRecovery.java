@@ -8,6 +8,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class ArchietcturalRecovery {
     private final Path root = Paths.get("ArchRecovery");
@@ -27,17 +30,25 @@ public class ArchietcturalRecovery {
             if (isArc) {
                 String[] args = new String[]{input};
                 PipeExtractor.main(args);
-                Runtime rt= Runtime.getRuntime();
-                Process mallet1 = rt.exec(new String[]{
+                List<String> phase1 = Arrays.asList(
                         "./ext-tools/mallet-2.0.7/bin/mallet",
                         "import-dir",
                         "--input", input,
                         "---remove-stopwords", "TRUE",
                         "--keep-sequence", "TRUE",
                         "ArchRecovery/topicmodel.data"
-                });
-                Process mallet2 = rt.exec(new String[]{
-                        "./ext-tools/mallet-2.0.7/bin/mallet",
+                );
+                ProcessBuilder process1 = new ProcessBuilder(phase1);
+                process1.inheritIO();
+                try {
+                    Process p = process1.start();
+                    p.waitFor();
+                } catch (IOException ioe){
+                    throw new RuntimeException("Unable to start process");
+                } catch (InterruptedException ie){
+                    throw new RuntimeException("Process is Interrupted");
+                }
+                List<String> phase2 = Arrays.asList("./ext-tools/mallet-2.0.7/bin/mallet",
                         "train-topics",
                         "--input", "ArchRecovery/topicmodel.data",
                         "--inferencer-filename", "infer.mallet",
@@ -45,8 +56,17 @@ public class ArchietcturalRecovery {
                         "--num-topics", "100",
                         "--num-threads", "3",
                         "--num-iterations", "100",
-                        "--doc-topics-threshold", "0.1"
-                });
+                        "--doc-topics-threshold", "0.1");
+                ProcessBuilder process2 = new ProcessBuilder(phase2);
+                process2.inheritIO();
+                try {
+                    Process p = process2.start();
+                    p.waitFor();
+                } catch (IOException ioe){
+                    throw new RuntimeException("Unable to start process");
+                } catch (InterruptedException ie){
+                    throw new RuntimeException("Process is Interrupted");
+                }
                 String Lang = isC? "c" : "java";
                 String rootdir=root.getRoot().toString();
                 if (!hasFact){
