@@ -138,10 +138,6 @@ export default function FactExtraction() {
                         />
                     </Button>
                     <div> <br /> </div>
-                    <Typography variant="overline" display="block" gutterBottom>Dependencies RSF files</Typography>
-                        <UploadFiles parentCallback = {handleDependenciesCallback} />
-                    <div> <br /> </div>
-                    <Typography variant="overline" display="block" gutterBottom>Language</Typography>
                     <input onClick={() => {setLanguage("Java")}} type="radio" name="languageSelection" value="Java" /> Java
                     <input onClick={() => {setLanguage("C/C++")}} type="radio" name="languageSelection" value="C++" /> C++
                     <div> <br /> </div>
