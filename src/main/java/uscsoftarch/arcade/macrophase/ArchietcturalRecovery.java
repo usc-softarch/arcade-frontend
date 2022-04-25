@@ -1,6 +1,6 @@
 package uscsoftarch.arcade.macrophase;
 
-import edu.usc.softarch.arcade.clustering.acdc.ACDC;
+import edu.usc.softarch.arcade.clustering.drivers.AcdcWithSmellDetection;
 import edu.usc.softarch.arcade.clustering.techniques.ConcernClusteringRunner;
 import edu.usc.softarch.arcade.util.ldasupport.PipeExtractor;
 
@@ -13,22 +13,22 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ArchietcturalRecovery {
-    private final Path root = Paths.get("ArchRecovery");
-    private final Path base = Paths.get("ArchRecovery/base");
+
+    private final Path root = Paths.get("uploads");
+    private final Path base = Paths.get("uploads/base");
 
     public ArchietcturalRecovery(){
         try {
-            Files.createDirectory(root);
             Files.createDirectory(base);
-        } catch (IOException e) {
-            throw new RuntimeException("Could not initialize folder for Arch recovery!");
+        } catch (IOException ignored) {
         }
     }
 
-    void Recover(String input, Boolean isArc, Boolean isC, Boolean hasFact){
+    void Recover(String input, Boolean isArc, Boolean isC, Boolean hasFact, String ffv){
         try {
             if (isArc) {
-                String[] args = new String[]{input};
+                String Lang = isC? "c" : "java";
+                String[] args = new String[]{input,root.toAbsolutePath().toString(),base.toAbsolutePath().toString(),Lang};
                 PipeExtractor.main(args);
                 List<String> phase1 = Arrays.asList(
                         "./ext-tools/mallet-2.0.7/bin/mallet",
@@ -36,7 +36,7 @@ public class ArchietcturalRecovery {
                         "--input", input,
                         "---remove-stopwords", "TRUE",
                         "--keep-sequence", "TRUE",
-                        "ArchRecovery/topicmodel.data"
+                        "upload/topicmodel.data"
                 );
                 ProcessBuilder process1 = new ProcessBuilder(phase1);
                 process1.inheritIO();
@@ -44,13 +44,14 @@ public class ArchietcturalRecovery {
                     Process p = process1.start();
                     p.waitFor();
                 } catch (IOException ioe){
+                    ioe.printStackTrace();
                     throw new RuntimeException("Unable to start process");
                 } catch (InterruptedException ie){
                     throw new RuntimeException("Process is Interrupted");
                 }
                 List<String> phase2 = Arrays.asList("./ext-tools/mallet-2.0.7/bin/mallet",
                         "train-topics",
-                        "--input", "ArchRecovery/topicmodel.data",
+                        "--input", "upload/topicmodel.data",
                         "--inferencer-filename", "infer.mallet",
                         "--num-top-words", "50",
                         "--num-topics", "100",
@@ -63,26 +64,28 @@ public class ArchietcturalRecovery {
                     Process p = process2.start();
                     p.waitFor();
                 } catch (IOException ioe){
+                    ioe.printStackTrace();
                     throw new RuntimeException("Unable to start process");
                 } catch (InterruptedException ie){
                     throw new RuntimeException("Process is Interrupted");
                 }
-                String Lang = isC? "c" : "java";
-                String rootdir=root.getRoot().toString();
+                String rootdir=base.getRoot().toString();
                 if (!hasFact){
-                    new FactExtraction().run(input,isC);
+                    ffv=new FactExtraction().run(input,isC,"");
                 }
                 ConcernClusteringRunner.main(new String[]{
                         Lang,
-                        "ArchRecovery",
+                        "uploads",
                         rootdir,
-                        "FactExtraction/ffv",
-                        "ArchRecovery"
+                        Paths.get(ffv).toAbsolutePath().toString(),
+                        "uploads"
                 });
             } else {
-                ACDC.run(input,root.toString());
+                String lang = isC? "c" : "java";
+                AcdcWithSmellDetection.main(new String[]{input,root.toString(),"",lang});
             }
         } catch (Exception e){
+            e.printStackTrace();
             throw new RuntimeException("Unable to run Arch recovery!");
         }
     }

@@ -12,19 +12,15 @@ import java.nio.file.Paths;
 
 public class Metrics {
 
-    private final Path root = Paths.get("Metrics");
+    private final Path root = Paths.get("uploads");
+
     public Metrics(){
-        try {
-            Files.createDirectory(root);
-        } catch (IOException e) {
-            throw new RuntimeException("Could not initialize folder for metrics!");
-        }
     }
 
     public void Run(String method, String dependencyRSF, String clusterRSF){
         try {
             PrintStream OriginalOut = System.out;
-            PrintStream fileOut = new PrintStream("./Metrics/metrics.txt");
+            PrintStream fileOut = new PrintStream(root.toAbsolutePath()+"/metrics.txt");
 
             System.setOut(fileOut);
             if (method.equals("A2a")) {

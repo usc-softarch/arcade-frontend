@@ -10,24 +10,19 @@ import java.nio.file.Paths;
 
 public class SmellDetection {
 
-    private final Path root = Paths.get("Smells");
+    private final Path root = Paths.get("uploads");
 
     public SmellDetection(){
-        try {
-            Files.createDirectory(root);
-        } catch (IOException e) {
-            throw new RuntimeException("Could not initialize folder for smell detection!");
-        }
     }
 
-    public void Run(String dependencyRSF,String clusterRSF, String serFiles, String mallet, Boolean isArc){
+    public void Run(String dependencyRSF,String clusterRSF, String serFiles, String mallet, String lang, Boolean isArc){
         String isArc_s= isArc? "true" : "false";
         try{
             PrintStream OriginalOut = System.out;
-            PrintStream fileOut = new PrintStream("./Metrics/smells.txt");
+            PrintStream fileOut = new PrintStream(root.toAbsolutePath()+"/smells.txt");
 
             ArchSmellDetector.main(new String[]{
-                    dependencyRSF,clusterRSF,serFiles,mallet,isArc_s
+                    dependencyRSF,clusterRSF,serFiles,lang,mallet,isArc_s
             });
 
             System.setOut(OriginalOut);
