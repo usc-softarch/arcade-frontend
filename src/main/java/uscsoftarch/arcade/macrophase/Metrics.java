@@ -3,6 +3,7 @@ package uscsoftarch.arcade.macrophase;
 import edu.usc.softarch.arcade.decay.BatchDecayMetricsAnalyzer;
 import edu.usc.softarch.arcade.metrics.BatchSystemEvo;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintStream;
@@ -17,17 +18,18 @@ public class Metrics {
     public Metrics(){
     }
 
-    public void Run(String method, String dependencyRSF, String clusterRSF){
+    public String Run(String method, String dependencyRSF, String clusterRSF){
         try {
             PrintStream OriginalOut = System.out;
-            PrintStream fileOut = new PrintStream(root.toAbsolutePath()+"/metrics.txt");
-
-            System.setOut(fileOut);
-            if (method.equals("A2a")) {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            dependencyRSF = root.toAbsolutePath().toString();
+            clusterRSF = root.toAbsolutePath().toString();
+            System.setOut(new PrintStream(baos));
+            if (method.equals("a2a")) {
                 BatchSystemEvo.main(new String[]{
                         clusterRSF
                 });
-            } else {
+            } else if (method.equals("batch")){
                 BatchDecayMetricsAnalyzer.main(new String[]{
                         dependencyRSF,
                         clusterRSF
@@ -35,6 +37,7 @@ public class Metrics {
             }
 
             System.setOut(OriginalOut);
+            return baos.toString();
         } catch (FileNotFoundException fnfe){
             throw new RuntimeException("Unable to run Metrics!");
         }
