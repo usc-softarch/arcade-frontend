@@ -25,6 +25,8 @@ public class ArchietcturalRecovery {
     }
 
     void Recover(String input, Boolean isArc, Boolean isC, Boolean hasFact, String ffv){
+        //input is the folder containing code multiple versions of the system
+        //ffv is another folder
         try {
             if (isArc) {
                 String Lang = isC? "c" : "java";

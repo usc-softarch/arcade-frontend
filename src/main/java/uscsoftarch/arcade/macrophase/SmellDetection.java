@@ -17,6 +17,7 @@ public class SmellDetection {
     }
 
     public String Run(String dependencyRSF,String clusterRSF, String serFiles, String mallet, String lang, Boolean isArc){
+        //dependency, cluster, ser all need to be seperate directories holding corresponding files
         String isArc_s= isArc? "true" : "false";
         try{
             PrintStream OriginalOut = System.out;

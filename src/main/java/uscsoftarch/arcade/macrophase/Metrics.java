@@ -19,6 +19,8 @@ public class Metrics {
     }
 
     public String Run(String method, String dependencyRSF, String clusterRSF){
+        //dependency, cluster need to be seperate directories holding the correspoinding files
+        //(They are now ignored and just set to the /uploads folder)
         try {
             PrintStream OriginalOut = System.out;
             ByteArrayOutputStream baos = new ByteArrayOutputStream();

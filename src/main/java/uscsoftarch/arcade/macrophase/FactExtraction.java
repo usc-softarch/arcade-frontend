@@ -17,6 +17,8 @@ public class FactExtraction {
     }
 
     public String run(String input, Boolean isC, String prefix) throws IOException{
+        //input is the folder containing code multiple versions of the system
+
             Path p=Paths.get(input);
             String i=p.toAbsolutePath().toString();
             String dep=upload.toAbsolutePath().toString()+"/"+p.getFileName()+".rsf";
