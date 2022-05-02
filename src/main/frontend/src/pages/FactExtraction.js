@@ -70,10 +70,6 @@ export default function FactExtraction() {
         setActiveStep(0);
     };
 
-    const handleDependenciesCallback = (childData) => {
-        setDependenciesRSFFiles(childData);
-    }
-
     return (
         <div>
             <ArcadeBar/>
@@ -125,7 +121,8 @@ export default function FactExtraction() {
                 </React.Fragment>
             ) : (
                 <React.Fragment>
-                    <Typography variant="overline" display="block" gutterBottom>Input File Directory</Typography>
+                    <Typography variant="overline" display="block">Input File Directory</Typography>
+                    <p style={{margin: '0px 0px 15px 15px', color: 'gray'}}>Directory containing the system code to be analyzed</p>
                     <Button
                         variant="contained"
                         component="label"
@@ -138,6 +135,7 @@ export default function FactExtraction() {
                         />
                     </Button>
                     <div> <br /> </div>
+                    <Typography variant="overline" display="block" gutterBottom>Language</Typography>
                     <input onClick={() => {setLanguage("Java")}} type="radio" name="languageSelection" value="Java" /> Java
                     <input onClick={() => {setLanguage("C/C++")}} type="radio" name="languageSelection" value="C++" /> C++
                     <div> <br /> </div>

@@ -128,7 +128,7 @@ export default function Metrics() {
             {activeStep === steps.length ? (
                 <React.Fragment>
                     <Typography sx={{ mt: 2, mb: 1 }}>
-                        All steps completed - you&apos;re finished
+                        Success! The generated files are available here for download.
                     </Typography>
                     <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                         <Box sx={{ flex: '1 1 auto' }} />
@@ -138,6 +138,10 @@ export default function Metrics() {
             ) : (
                 <React.Fragment>
                     <Typography variant="overline" display="block" gutterBottom>Select metric(s):</Typography>
+                    <p style={{margin: '0px 0px 15px 15px', color: 'gray'}}>
+                        - Architecture-to-architecture (A2A) is a system-level similarity metric based on the cost of transforming one architecture to another<br/>
+                        - Metrics for analyzing the decay of software architectures over time, allowing for improved understanding of the relationship between architectural change and decay on the one hand, and the reported implementation issues faced by architects and developers on the other
+                    </p>
                     <input onClick={() => {setMetrics("A2A")}} type="radio" id="metric1" value="A2A" /> A2A
                     &nbsp;
                     <input onClick={() => {setMetrics("Decay Metrics")}} type="radio" id="metric2" value="Decay Metrics" /> Decay Metrics
@@ -145,10 +149,12 @@ export default function Metrics() {
                     <Button onClick={clearMetricSelections} sx={{ mb: 1 }}>
                         Clear
                     </Button>
-                    <Typography variant="overline" display="block" gutterBottom>Folder containing clustered RSF files:</Typography>
+                    <Typography variant="overline" display="block" gutterBottom>Directory Containing clustered RSF files:</Typography>
+                    <p style={{margin: '0px 0px 15px 15px', color: 'gray'}}>ZIP file of the directory containing clustered RSF files</p>
                         <UploadFiles parentCallback = {handleClusterCallback} />
                     <div> <br /> </div>
                     <Typography variant="overline" display="block" gutterBottom>Directory containing dependency RSF files:</Typography>
+                    <p style={{margin: '0px 0px 15px 15px', color: 'gray'}}>ZIP file of the directory containing dependency RSF files</p>
                         <UploadFiles parentCallback = {handleDependencyCallback} />
                     <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                         <Button

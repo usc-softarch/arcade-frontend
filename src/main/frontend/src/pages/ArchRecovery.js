@@ -25,6 +25,7 @@ export default function ArchRecovery() {
 
     const [recoveryTechnique, setRecoveryTechnique] = React.useState('');
     const [inputFileDirectory, setInputFileDirectory] = React.useState('');
+    const [inputDirectory, setInputDirectory] = React.useState('');
     const [factExtractorFiles, setFactExtractorFiles] = React.useState('');
 
     const isStepOptional = (step) => {
@@ -68,6 +69,10 @@ export default function ArchRecovery() {
     const handleReset = () => {
         setActiveStep(0);
     };
+
+    const handleDirectoryCallback = (childData) => {
+        setInputDirectory(childData);
+    }
 
     const handleFactCallback = (childData) => {
         setFactExtractorFiles(childData);
@@ -115,7 +120,7 @@ export default function ArchRecovery() {
             {activeStep === steps.length ? (
                 <React.Fragment>
                     <Typography sx={{ mt: 2, mb: 1 }}>
-                        All steps completed - you&apos;re finished
+                        Success! The generated files are available here for download.
                     </Typography>
                     <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                         <Box sx={{ flex: '1 1 auto' }} />
@@ -125,19 +130,20 @@ export default function ArchRecovery() {
             ) : (
                 <React.Fragment>
                     <Typography variant="overline" display="block" gutterBottom>Recovery Technique</Typography>
+                    <p style={{margin: '0px 0px 15px 15px', color: 'gray'}}>
+                        - Algorithm for Comprehension-Driven Clustering (ACDC) uses human-comprehensible patterns commonly encountered in software systems to group source code entities into components<br/>
+                        - Architecture Recovery using Concerns (ARC) uses the words in the source code of a system to detect the concerns the system addresses. It then uses those concerns to group code entities into clusters that represent components
+                    </p>
                     <input onClick={() => {setRecoveryTechnique("ACDC")}}  type="radio" name="recoveryTechniqueSelection" value="ACDC" /> ACDC
                     &nbsp;
                     <input onClick={() => {setRecoveryTechnique("ARC")}} type="radio" name="recoveryTechniqueSelection" value="ARC" /> ARC
                     <div> <br /> </div>
                     <Typography variant="overline" display="block" gutterBottom>Input File Directory</Typography>
-                    <Button
-                        variant="contained"
-                        component="label"
-                    >
-                        Upload Directory
-                    </Button>
+                    <p style={{margin: '0px 0px 15px 15px', color: 'gray'}}>ZIP file of directory containing one or more subdirectories with different versions of the subject system</p>
+                    <UploadFiles parentCallback = {handleDirectoryCallback} />
                     <div> <br /> </div>
                     <Typography variant="overline" display="block" gutterBottom>Fact Extractor Files (optional)</Typography>
+                    <p style={{margin: '0px 0px 15px 15px', color: 'gray'}}>Output files from the Fact Extraction macrophase for the subject system</p>
                         <UploadFiles parentCallback = {handleFactCallback} />
                     <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                         <Button

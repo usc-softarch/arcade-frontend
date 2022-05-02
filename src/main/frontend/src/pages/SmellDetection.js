@@ -129,7 +129,7 @@ export default function SmellDetection() {
             {activeStep === steps.length ? (
                 <React.Fragment>
                     <Typography sx={{ mt: 2, mb: 1 }}>
-                        All steps completed - you&apos;re finished
+                        Success! The generated files are available here for download.
                     </Typography>
                     <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                         <Box sx={{ flex: '1 1 auto' }} />
@@ -139,6 +139,10 @@ export default function SmellDetection() {
             ) : (
                 <React.Fragment>
                     <Typography variant="overline" display="block" gutterBottom>Select Smell Detector(s):</Typography>
+                    <p style={{margin: '0px 0px 15px 15px', color: 'gray'}}>
+                        - ArchSmellDetector detects concern-based and dependency-based smells<br/>
+                        - DependencyFinderProcessing detects interface-based and coupling-based smells
+                    </p>
                     <input onClick={() => {setArchSmellDetector(true)}} type="radio" id="smellDetector1" value="ArchSmellDetector" /> ArchSmellDetector
                     &nbsp;
                     <input onClick={() => {setDependencyFinderProcessing(true)}} type="radio" id="smellDetector2" value="DependencyFinderProcessing" /> DependencyFinderProcessing
@@ -146,10 +150,12 @@ export default function SmellDetection() {
                     <Button onClick={clearSmellDetectors} sx={{ mb: 1 }}>
                         Clear
                     </Button>
-                    <Typography variant="overline" display="block" gutterBottom>Dependency RSF Files</Typography>
+                    <Typography variant="overline" display="block" gutterBottom>Directory Containing Dependency RSF Files</Typography>
+                    <p style={{margin: '0px 0px 15px 15px', color: 'gray'}}>ZIP file of the directory containing dependency RSF files</p>
                         <UploadFiles parentCallback = {handleDependencyCallback} />
                     <div> <br /> </div>
-                    <Typography variant="overline" display="block" gutterBottom>Cluster RSF Files</Typography>
+                    <Typography variant="overline" display="block" gutterBottom>Directory Containing Clustered RSF Files</Typography>
+                    <p style={{margin: '0px 0px 15px 15px', color: 'gray'}}>ZIP file of the directory containing clustered RSF files</p>
                         <UploadFiles parentCallback = {handleClusterCallback} />
                     <div> <br /> </div>
                     <Typography variant="overline" display="block" gutterBottom>Language</Typography>
