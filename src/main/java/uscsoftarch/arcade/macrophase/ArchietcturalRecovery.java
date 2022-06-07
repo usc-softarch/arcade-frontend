@@ -1,7 +1,7 @@
 package uscsoftarch.arcade.macrophase;
 
 import edu.usc.softarch.arcade.clustering.drivers.AcdcWithSmellDetection;
-import edu.usc.softarch.arcade.clustering.techniques.ConcernClusteringRunner;
+import edu.usc.softarch.arcade.clustering.Clusterer;
 import edu.usc.softarch.arcade.util.ldasupport.PipeExtractor;
 
 import java.io.IOException;
@@ -75,7 +75,7 @@ public class ArchietcturalRecovery {
                 if (!hasFact){
                     ffv=new FactExtraction().run(input,isC,"");
                 }
-                ConcernClusteringRunner.main(new String[]{
+                Clusterer.main(new String[]{
                         Lang,
                         "uploads",
                         rootdir,
@@ -84,7 +84,7 @@ public class ArchietcturalRecovery {
                 });
             } else {
                 String lang = isC? "c" : "java";
-                AcdcWithSmellDetection.main(new String[]{input,root.toString(),"",lang});
+							Clusterer.main(new String[]{input,root.toString(),"",lang});
             }
         } catch (Exception e){
             e.printStackTrace();
